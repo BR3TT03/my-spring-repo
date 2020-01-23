@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>AccessDenied</title>
+</head>
+<body>
+<h1 align="center">User&nbsp;<span sec:authentication="name">user</span>&nbsp;is not allowed to access this page</h1>
+</body>
+</html>

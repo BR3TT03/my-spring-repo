@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<title>"User Detail"</title>
+</head>
+<body>
+	<div
+		style="background-color: lightblue; height: 20%; width: 10%; text-align: center; float: left; border: 10px solid white;">
+		<p th:text="${userDetails.userId}"></p>
+		<p th:text="${userDetails.userName}"></p>
+		<p th:text="${userDetails.firstName} + ' ' + ${userDetails.lastName}"></p>
+		<p th:text="${userDetails.phoneNumber}"></p>
+
+		<button>Delete</button>
+
+	</div>
+</body>
+</html>

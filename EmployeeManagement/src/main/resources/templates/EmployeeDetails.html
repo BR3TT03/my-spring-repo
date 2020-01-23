@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 align="center">Employee Details</h1>
+	<div align="center" id="images" th:if="${employeeNotFound == null}"
+		style="border-style: solid; height: 400px; width: 400px; padding: 10px; background-color: aqua; margin:auto">
+		<img th:src="${employeeDetails.avatar.employeeImages}"
+			style="height: 250px; width: 350px" /><br>
+		<p th:text="${employeeDetails.employeeName}"></p>
+		<p th:text="${employeeDetails.employeePost}"></p>
+		<p th:text="${employeeDetails.employeeEmail}"></p>
+		<p>
+			Salary: Rs.<label th:text="${employeeDetails.employeeSalary}"></label>
+		</p>
+
+	</div>
+	<div th:if="${employeeNotFound != null}">
+		<p th:text="${employeeNotFound.message}"> </p>
+	</div>
+</body>
+</html>

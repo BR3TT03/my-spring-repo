@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Employee Details</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+	
+</script>
+</head>
+<body>
+	<h1 align="center">
+		<b>Employee Management</b>
+	</h1>
+	<br>
+	<div align="center" id="images" th:each="employee: ${allEmployee}"
+		style="border-style: solid; height: 20%; width: 20%; padding: 10px; float: left; margin: 4px; background-color: aqua;">
+		<a th:href="@{'/employeeInfo/{id}' (id = ${employee.employeeID})}">
+		<img
+			th:src="${employee.avatar.employeeImages}"
+			style="height: 120px; width: 180px" /></a><br>
+		<p th:text="${employee.employeeName}"></p>
+		<p th:text="${employee.employeePost}"></p>
+		
+		<button sec:authorize="hasRole('ROLE_ADMIN')" th:data-empId-type="${employee.employeeID}">Delete</button>
+
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(":button").each(function() {
+				var button = $(this);
+				$(this).click(function() {
+					let id = this.getAttribute("data-empId-type");
+					//alert(id);
+					$.ajax({
+
+						method : "DELETE",
+						url : "/employeeInfo/" + id,
+						success : function(data) {
+							alert(data);
+							button.parent().remove();
+						}
+
+					});
+				});
+
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Employee Details</title>
+</head>
+<body>
+	<h1 align="center">
+		<b>Employee Management</b>
+	</h1>
+	<div align="center" id="images" th:each="employee:${allEmployee}"
+		style="border-style: solid; height: 200px; width: 200px; padding: 10px; float: left; margin: 4px; background-color: aqua;">
+		<a th:href="@{'/employee/{id}' (id = ${employee.employeeID})}"><img
+			th:src="${employee.avatar.employeeImages}"
+			style="height: 120px; width: 180px" /></img></a><br>
+		<p th:text="${employee.employeeName}"></p>
+		<p th:text="${employee.employeePost}"></p>
+		<a th:href="@{'/employee/{id}' (id = ${employee.employeeID})}" th:method="POST"><button>Delete</button></a>
+
+	</div>
+</body>
+</html>
